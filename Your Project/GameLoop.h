@@ -31,6 +31,7 @@ public:
 
 	// An update function that gets called directly after input is parsed
 	void Update();
+
 	// An update function that gets called directly after 'Update()'
 	void LateUpdate();
 
