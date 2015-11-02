@@ -11,6 +11,7 @@
 
 #include "Graphics.h"
 #include "EventHandler.h"
+using namespace std;
 
 // This is called inheritance
 // The GameLoop class inherits every member variable and function from 'EventHandler'
