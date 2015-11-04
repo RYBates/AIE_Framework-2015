@@ -1,6 +1,7 @@
 //////////////////////////////////////////////////////////////
 // File: GameLoop.h
 // Author: Ben Odom
+// Changes Made: Ryan Bates
 // Brief: A short and simple game loop object which will allow
 //		  a base layout for how you should organize your game
 //		  functions. 

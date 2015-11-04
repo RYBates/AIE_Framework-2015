@@ -1,10 +1,11 @@
 #include "GameLoop.h"
 
-System::Point2D<int>pos{ 350,80 };
-System::Size2D<int>siz{ 100,50 };
-System::Color<int>col{ 300,450,150,1600 };
-
-System::Point2D<int>po{ 800,500 };
+System::Point2D<int>pos{ 405,620 };
+System::Point2D<float>po{ pos.X,pos.Y };
+System::Size2D<int>siz{ 5,50 };
+System::Color<int>col{ 255,255,255,255 };
+bool collision = false;
+int bulletlife = 32;
 
 void GameLoop::Loop()
 {
@@ -47,61 +48,112 @@ void GameLoop::Draw()
 	// just like a painter would paint onto a canvas
 	
 	// Ben's
-	Graphics::DrawRect({ 400, 400 }, { 450, 400 }, { 160, 65, 255, 255 });
-	Graphics::DrawRect({ 250, 500 }, { 1000, 200 }, { 0, 255, 0, 255 });
+	//Graphics::DrawRect({ 400, 400 }, { 450, 400 }, { 160, 65, 255, 255 });
+	//Graphics::DrawRect({ 250, 500 }, { 1000, 200 }, { 0, 255, 0, 255 });
 
-	Graphics::DrawLine({ 10, 10 }, { 100, 100 }, { 255, 255, 255, 255 });
-	Graphics::DrawPoint({ 5, 5 }, { 255, 255, 255, 255 });
+	//Graphics::DrawLine({ 10, 10 }, { 100, 100 }, { 255, 255, 255, 255 });
+	//Graphics::DrawPoint({ 5, 5 }, { 255, 255, 255, 255 });
 
-	Graphics::DrawRing({ 140, 140 }, 50, 25, { 50, 0, 200, 255 });
-	Graphics::DrawCircle({ 800, 450 }, 200, 50, { 0, 255, 255, 150 });
+	//Graphics::DrawRing({ 140, 140 }, 50, 25, { 50, 0, 200, 255 });
+	//Graphics::DrawCircle({ 800, 450 }, 200, 50, { 0, 255, 255, 150 });
 	
 	// mine
-	Graphics::DrawRect({ 350,80 }, { 260, 250 }, { 0,80,34,1500 });
+	Graphics::DrawRect({ 255,80 }, { 255, 250 }, { 0,80,34,255 });
+	Graphics::DrawRect({900,2}, { 400, 923 }, { 250, 0, 0, 255 });
+
+	//Graphics::DrawRect({ po.X,po.Y }, { 4, 10 }, { 250, 0, 0, 255 });
 
 	Graphics::DrawCircle({ pos.X,pos.Y },  siz.H, siz.W, {col.Red,col.Blue,col.Green,col.Alpha});
+	Graphics::DrawCircle({ pos.X,pos.Y }, 4, 10, { 250, 0, 0, 255 });
 
-	Graphics::DrawLine({ 15,15 }, { 60,60 }, { 20,68,150,83 });
-	Graphics::DrawPoint({ 20,20 }, { 60,150,800,350 });
+	Graphics::DrawLine({ 100,10 }, { 20,200 }, { 255,0,0,255 });
+	Graphics::DrawPoint({ 400,400 }, { 60,150,255,255 });
 
-	Graphics::DrawCircle({ po.X,po.Y }, 15, 100, { 0,50,50,100 });
 }
 
 void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)
 {
-
 	switch (ac_sdlSym)
 	{
 	case SDLK_ESCAPE: m_bRunning = false; break; // End the loop
-
+	
 	default: printf("%s\n", SDL_GetKeyName(ac_sdlSym)); break;
 	}
+	
+	switch (collision)
+	{
+
+	case 1:
+		
+		if (collision = true)
+		{
+			pos.X = pos.X = 0;
+			pos.Y = pos.Y = 0;
+			
+		}
+	}
+
 	//movement
 	if (ac_sdlSym == SDLK_UP)
 	{
-		pos.Y = pos.Y - 50;
+		pos.Y = pos.Y - 5;
 	}
 
 	if (ac_sdlSym == SDLK_LEFT)
 	{
-		pos.X = pos.X - 50;
+		pos.X = pos.X - 5;
 	}
 
 	if (ac_sdlSym == SDLK_DOWN)
 	{
-		pos.Y = pos.Y + 50;
+		pos.Y = pos.Y + 5;
 	}
 
 	if (ac_sdlSym == SDLK_RIGHT)
 	{
-		pos.X = pos.X + 50;
+		pos.X = pos.X + 5;
 	}
 
 
 	//bullet movement
-	if (ac_sdlSym == SDLK_1)
+	if (ac_sdlSym == SDLK_KP_2)
 	{
-		po.X = po.X * 10;
+		if (bulletlife = 32)
+		{
+			bulletlife = po.Y;
+			po.Y = po.Y + 1000;
+			Graphics::DrawRect({ po.X,po.Y }, { 4, 10 }, { 250, 0, 0, 255 });
+		}
+	}
+
+	if (ac_sdlSym == SDLK_KP_6)
+	{
+		if (bulletlife = 32)
+		{
+			bulletlife = po.X;
+			po.X = po.X + 10000;
+			Graphics::DrawRect({ po.X,po.Y }, { 4, 10 }, { 250, 0, 0, 255 });
+		}
+	}
+	
+	if (ac_sdlSym == SDLK_KP_8)
+	{
+		if (bulletlife = 32)
+		{
+			bulletlife = po.Y;
+			po.Y = po.Y - 1000;
+			Graphics::DrawRect({ po.X,po.Y }, { 4, 10 }, { 250, 0, 0, 255 });
+		}
+	}
+	
+	if (ac_sdlSym == SDLK_KP_4)
+	{
+		if (bulletlife = 32)
+		{
+			bulletlife = po.X;
+			po.X = po.X - 10000;
+			Graphics::DrawRect({ po.X,po.Y }, { 4, 10 }, { 250, 0, 0, 255 });
+		}
 	}
 	
 
