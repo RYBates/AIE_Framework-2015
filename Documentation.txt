@@ -1,9 +1,60 @@
+Name: Ryan Bates
+S#1099
+Date:11/17/2015
+Assessment: 110
+
+A) intro	:
+
+A.1)Purpose: 
+For this assessment we were supposed to create a shape as well as make the item move with user input as well as make it move using deltatime. we also implemented the math library into the project and made it show what the answers were using user input. For the last thing we did, it was making a graph and have the graph change using user input.
+
+A.2) Organization:
+N/A
+
+A.3)Content:
+The way I set my program up was by making my circles first then using user input for making the circle move depending on what keys they used not only could they change the direction they were able to change color, shape, and size. The second thing I did was implementing the static math library and making it also user input to show the answers for the question. Then I was able to make the circles move on their own using deltatime and after using deltatime to the circle I made the graph and allowed the user to increase the size of the graph. After all of this was done we all started to work on are own separate game of pong that was made for two players allowing two user inputs at one time.
+
+B) Physical Aspects of the Documentation:
+
+B.1) three materials used:
+deltatime.
+userinput
+static libraries
+
+B.2)Grading Notes:
+N/A
+
+B.3)outline of the contents for the Standard Documentation Folders:
+
+I) Requirements:
+Description of Problems:
+	Some problems I am having trouble with is making collision work as well as making two objects enlarge at the same time because i was trying to make the graph become larger but only the line would continue to grow. I would like to go over a little more on how to make two objects collide to understand it a little bit better.
+Input Information:
+	to move the circles you would use the wasd and 8456 then to do pong i commented out those and made the key up and down as well as ws for the paddles to hit the ball. Then i tried to make the circles bounce off each other and the end of the window however when they got to the end of the window they would stop.
+Output Information:
+	When you hit the w and s key for the pong the paddle would move up and down and i did the same thing for the left paddle using the UP and DOWN keys and it would show your score for which ever side scored.
+
+II)Design Documentation
+Diagrams
+	
+		insert Diagram here or after page.
+
+
+
+
+
+
+
+
+III) implementation Documentation:
+1)Programing code:
+
 #include "GameLoop.h"
 #include "CustomVML.h"
 
 //library vectors
-Vec2 <double> A, B, C, H, I, J; 
-Vec3 <double> D, E, F, G; 
+Vec2 <double> A, B, C; 
+Vec3 <double> D, E, F; 
 
 //cirlce a
 System::Point2D<int>pos{ 0,450 };
@@ -448,7 +499,7 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 		}
 	}
 
-	//math library
+//math library
 	switch (ac_sdlSym)
 	{
 	case SDLK_1:
@@ -557,7 +608,7 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 
 		system("pause");
 	}
-	
+
 }
 void GameLoop::OnKeyUp(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)
 {
@@ -606,3 +657,31 @@ GameLoop::~GameLoop()
 {
 
 }
+
+
+IV)Verification & Validation Documentation:
+1)Test Plan:
+1)addition: A.x + B.x, A.y,+ B.y		// 5 + -2, 4 + 5			///3, 9
+2)subtraction: A.x - B.x, A.y - B.y		//5 - -2, 4 - 5			///7, -1
+3a)magnitude: x*x + y*y			A//5 * 5 + 4 *4			///41
+3a)						B//-2 * -2 + 5 * 5		///29
+4a)normalization: x / (x * x  + y * y)		A//5 / (5 * 5 + 4 * 4)		///.12
+4b)						B// -2 / (-2 * -2 + 5 * 5)	///-.07
+5)dot: ((A.x * B.x)+(A.y * B.y))		//(5 * -2)+(4 * 5)		///20
+6a)linear: (x + (.5 *(x - y)))			A//(1 +(.5 *(1 - 6)))		///-1.5
+6b)						B//(4 +(.5 *(4 - 5)))		///3.5
+
+2)Test Results:
+1)	3, 9
+2)	7, -1
+3a)	6.40
+3b)	5.39
+4a)	0.78
+4b)	-0.37
+5)	10
+6a)	10
+6b)	
+	
+3)Operating Directions: 
+Directions: 
+	using the up and down arrow keys are how you move the right, or player 2, paddle and w and s are how you move the left, or player 1, paddle up and down trying to keep the ball out of your own goal, and trying to make it in your opponent's goal.

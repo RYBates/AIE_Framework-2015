@@ -11,6 +11,8 @@
 
 #include "Graphics.h"
 #include "EventHandler.h"
+#include <ctime>
+
 using namespace std;
 
 // This is called inheritance
@@ -30,13 +32,12 @@ public:
 	// The game loop
 	void Loop();
 
-	// An update function that gets called directly after input is parsed
-	void Update();
-	// An update function that gets called directly after 'Update()'
-	void LateUpdate();
-
 	// An update-like function that gets called directly after 'LateUpdate'
 	void Draw();
+
+	void Update();
+
+	void LateUpdate();
 
 	// Gets called automatically by 'EventHandler' when a key is pressed
 	void OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode);

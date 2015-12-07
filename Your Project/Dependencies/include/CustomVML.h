@@ -1,12 +1,3 @@
-/*
-Assignment : Math...
-1. Create a templated class that supports 2D Vector addition and subtraction. //Done
-2. Add support for 3D vectors.                                                //Done
-3. Add support for magnitude of a vector.                                     //Done
-4. Add support for normalizing a vector.                                      //Done
-5. Add support for dot and cross product.                                     //Done
-*/
-
 #pragma once
 #include <iostream>   //c++ standard library
 #include <cmath>      //c++ library that allows the use of "sqrt" and "pow" math
@@ -66,7 +57,7 @@ public:
 		return nX;
 	}
 
-	double nor2Y()
+	double nor2Y() 
 	{
 		double nY = y / sqrtf(x * x + y * y);
 		return nY;
@@ -79,6 +70,14 @@ public:
 		double d2 = x + y;
 		cout << d2 << endl;
 		return d2;
+	}
+
+	//linear Interpolation
+	double lin2()
+	{
+		double l2 = (x + (.5 * (x - y)));
+		cout << l2 << endl;
+		return l2;
 	}
 
 	void print2() //prints out x and y for 2D vectors
@@ -172,6 +171,14 @@ public:
 		double d3 = x + y + z;
 		cout << d3 << endl;
 		return d3;
+	}
+
+	//linear Interpolation 
+	double lin()
+	{
+		double l = (x + z * (y - x));
+		cout << l << endl;
+		return l;
 	}
 
 	void print3() //prints out x, y and z for 3D vectors
