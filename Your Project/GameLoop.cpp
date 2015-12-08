@@ -1,9 +1,15 @@
 #include "GameLoop.h"
-#include "CustomVML.h"
+#include <CustomVML.h>
 
 //library vectors
 Vec2 <double> A, B, C, H, I, J; 
-Vec3 <double> D, E, F, G; 
+Vec3 <double> D, E, F, G, K, L;
+
+
+///////////////////////////////////////////////////////////////////////////
+Vec4 <unsigned int> HC;
+///////////////////////////////////////////////////////////////////////////
+
 
 //cirlce a
 System::Point2D<int>pos{ 0,450 };
@@ -463,10 +469,11 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 		C = A + B; 
 		C.print2(); 
 		cout << endl; 
-		cout << "2D vector subtraction:" << endl; 
+
 		break;
 
 	case SDLK_2:
+		cout << "2D vector subtraction:" << endl;
 		C = A - B; 
 		C.print2(); 
 		cout << endl;
@@ -481,7 +488,6 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 		cout << "Normalise vector A is: " << A.nor2X() << " " << A.nor2Y() << endl; 
 		cout << "Normalise vector B is: " << B.nor2X() << " " << B.nor2Y() << endl; 
 		cout << endl;
-		cout << "2D vector dot product:" << endl; 
 		break;
 
 	case SDLK_4:
@@ -493,12 +499,12 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 	case SDLK_5:
 		cout << "2D linear product: " << endl;
 		H.x = 1, H.y = 6;
-		I.x = 4, I.y = 5;
+		I.x = 3, I.y = 5;
 		H.print2();
 		I.print2();
+		J = H % I;
 		cout << "answer: " << endl;
-		J = H + I;
-		J.lin2();
+		J.print2();
 		cout << endl;
 		break;
 
@@ -509,30 +515,33 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 		D.print3(); 
 		E.print3(); 
 		cout << endl; 
+		
 		cout << "3D vector addition:" << endl; 
-
 		F = D + E; 
 		F.print3(); 
 		cout << endl;
-		cout << "3D vector subtraction:" << endl; 
 		break;
 
 	case SDLK_7:
+		cout << "3D vector subtraction:" << endl;
 		F = D - E; 
 		F.print3(); 
 		cout << endl; 
+
 		cout << "3D vector magnitude:" << endl; 
 		cout << "Magnitude of D is: " << D.mag3() << endl; 
 		cout << "Magnitude of E is: " << E.mag3() << endl; 
 		cout << endl; 
+
 		cout << "3D vector normalise:" << endl; 
 		cout << "Normalise vector D is: " << D.nor3X() << " " << D.nor3Y() << " " << D.nor3Z() << endl; 
 		cout << "Normalise vector E is: " << E.nor3X() << " " << E.nor3Y() << " " << E.nor3Z() << endl; 
 		cout << endl;
-		cout << "3D vector dot product:" << endl;
+		
 		break;
 
 	case SDLK_8:
+		cout << "3D vector dot product:" << endl;
 		F = D * E; 
 		F.dot3(); 
 		cout << endl; 
@@ -547,11 +556,24 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 
 	case SDLK_0:
 		cout << "3D Linear product: " << endl;
-		G.x = 1, G.y = 15, G.z = .5;
+		G.x = 1, G.y = 15, G.z = 61;
+		K.x = 6, K.y = 21, K.z = 8;
 		G.print3();
+		K.print3();
+		L = G % K;
 		cout << endl;
 		cout << "answer:" << endl;
-		G.lin();
+		L.print3();
+		cout << endl;
+		break;
+
+		// Hex
+	case SDLK_m:
+		HC.R = 0x45C24D23;
+		HC.G = 0x035F4A15;
+		HC.B = 0x11EB68D3;
+		HC.A = 0x777F9CC6;
+		cout << HC.r4H() << "," << HC.g4H() << "," << HC.b4H() << "," << HC.a4H() << endl;
 		cout << endl;
 		break;
 

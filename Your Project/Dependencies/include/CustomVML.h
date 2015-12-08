@@ -73,11 +73,11 @@ public:
 	}
 
 	//linear Interpolation
-	double lin2()
+	Vec2 operator%(const Vec2 &other)
 	{
-		double l2 = (x + (.5 * (x - y)));
-		cout << l2 << endl;
-		return l2;
+		T newX = (x + (.5*(other.x - x)));
+		T newY = (y + (.5*(other.y - y)));
+		return Vec2(newX, newY);
 	}
 
 	void print2() //prints out x and y for 2D vectors
@@ -174,15 +174,64 @@ public:
 	}
 
 	//linear Interpolation 
-	double lin()
+	Vec3 operator%(const Vec3 &other)
 	{
-		double l = (x + z * (y - x));
-		cout << l << endl;
-		return l;
+		T newX = (x + (.5*(other.x - x)));
+		T newY = (y + (.5*(other.y - y)));
+		T newZ = (z + (.5*(other.z - z)));
+		return Vec3(newX, newY, newZ);
 	}
 
 	void print3() //prints out x, y and z for 3D vectors
 	{
 		cout << x << ", " << y << ", " << z << endl;
+	}
+};
+template<typename T>
+class Vec4
+{
+public:
+	T R, G, B, A;
+
+	Vec4()
+	{
+		R, G, B, A;
+	}
+
+	Vec4(T R, T G, T B, T A)
+	{
+		R = r;
+		G = g;
+		B = b;
+		A = a;
+	}
+
+	void print4()
+	{
+		cout << r << "," << g << "," << b << "," << a << endl;
+	}
+
+	unsigned int r4H()
+	{
+		unsigned int rH = R >> 24;
+		return rH;
+	}
+
+	unsigned int g4H()
+	{
+		unsigned int gH = (G >> 16) & 0x00FF;
+		return gH;
+	}
+
+	unsigned int b4H()
+	{
+		unsigned int bH = (B >> 8) & 0x0000FF;
+		return bH;
+	}
+
+	unsigned int a4H()
+	{
+		unsigned int aH = A & 0x000000FF;
+		return aH;
 	}
 };
